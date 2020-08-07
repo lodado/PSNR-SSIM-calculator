@@ -12,6 +12,10 @@ import matplotlib.pyplot as plt
 def graph(X=[], Y=[], savefolder ='./', typeof='PSNR', Xlab='epoches'):
     plt.figure()
     
+    
+    
+
+    
     plt.title('graph')
     
     coloring = ''
@@ -20,13 +24,14 @@ def graph(X=[], Y=[], savefolder ='./', typeof='PSNR', Xlab='epoches'):
     else:
         coloring = 'red'
    
-    plt.xlabel(Xlab)
+    plt.xlabel(Xlab, labelpad=int(1))
     plt.ylabel(typeof)
     plt.plot(Y,label=typeof, color='black', marker='o', 
              markersize =3, markerfacecolor='black')
     
     plt.plot(X, label=typeof, color=coloring, marker='o', 
              markersize =3, markerfacecolor=coloring)
-     
+    
     plt.savefig(savefolder+typeof+'.jpg')
+    plt.legend()
     plt.close()
