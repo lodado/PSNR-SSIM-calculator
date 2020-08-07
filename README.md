@@ -1,5 +1,5 @@
 # PSNR-SSIM-calculator
-PSNR and SSIM calculator for each epoches 
+PSNR and SSIM calculator for each epoch
 
 ### default images from CelebA (http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html)
 
