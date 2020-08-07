@@ -14,13 +14,9 @@ PSNR and SSIM calculator for each epoch
  * python Calculator.py
  
  
- ####put original images 
- 
- in ./Input/HR
- 
- ####put epoch results 
- 
- in ./Input/savefolder
+put original images in ./Input/HR
+
+put epoch results in ./Input/savefolder
  
  
 
