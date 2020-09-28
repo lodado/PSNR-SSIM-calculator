@@ -13,14 +13,25 @@ import numpy as np
 
 
 #https://www.geeksforgeeks.org/python-peak-signal-to-noise-ratio-psnr/
-def PSNR(original, compressed): 
+def PSNR1(original, compressed):
+
     mse = np.mean((original - compressed) ** 2) 
     if(mse == 0):  # MSE is zero means no noise is present in the signal . 
                   # Therefore PSNR have no importance. 
         return 100
     max_pixel = 255.0
-    psnr = 20 * (log10(max_pixel)) - 10*(log10((mse))) 
+    #psnr = 20 * (log10(max_pixel)) - 10*(log10((mse)))
+
+    return psnr
+
+
+def PSNR(original, compressed):
+
+    #ori = original.astype(np.float64)/255
+    #com = compressed.astype(np.float64)/255
+    psnr = cv2.PSNR(original,compressed)
     return psnr 
+
 
 #https://ourcodeworld.com/articles/read/991/how-to-calculate-the-structural-similarity-index-ssim-between-two-images-with-python
 def SSIM(original, compressed): 
@@ -43,7 +54,8 @@ def cal_PSNR(origin,comp):
 
 def cal_PSNRandSSIM(origin, comp):
     original = cv2.imread(origin) 
-    compressed = cv2.imread(comp, 1) 
+    compressed = cv2.imread(comp, 1)
+
     value_PSNR = cal_PSNR(original, compressed)
     value_SSIM = SSIM(original,compressed)
     return [value_PSNR,value_SSIM]

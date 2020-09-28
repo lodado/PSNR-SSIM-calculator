@@ -8,6 +8,7 @@ import os
 import PSNR
 import argparse
 import graphing
+import cv2
 
 parser = argparse.ArgumentParser(description='test PSNR AND SSIM')
 
@@ -92,7 +93,18 @@ def calALL():
                 HR = opt.HR
                 HR = HR + img
                 print('open '+HR)
-                one, two = PSNR.cal_PSNRandSSIM(HR, LR)
+
+                #biimg = cv2.imread(LR)
+                #biimg = cv2.resize(biimg, None, fx=4, fy=4, interpolation=cv2.INTER_CUBIC)
+                #cv2.imwrite(opt.HR+'../bicubic/'+i ,biimg)
+
+                #LR = opt.HR+'../bicubic/'+i
+                #print(LR)
+                try:
+                    one, two = PSNR.cal_PSNRandSSIM(HR, LR)
+                except:
+                    print('skip')
+                    continue
                 print(f"{one} is PSNR, {two} is SSIM")
                 
                 f = open(newPath+"PSNR.txt", 'a')
